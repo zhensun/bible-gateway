@@ -196,6 +196,26 @@ but have everlasting life."
     ("2 Івана" . 1) ("3 Івана" . 1) ("Юда" . 1) ("Об'явлення" . 22))
   "List of Bible books (UKR version) with their number of chapters.")
 
+(defconst bible-gateway-bible-books-cnvs
+  '(("创世记" . 50) ("出埃及记" . 40) ("利未记" . 27) ("民数记" . 36)
+    ("申命记" . 34) ("约书亚记" . 24) ("士师记" . 21) ("路得记" . 4)
+    ("撒母耳记上" . 31) ("撒母耳记下" . 24) ("列王纪上" . 22) ("列王纪下" . 25)
+    ("历代志上" . 29) ("历代志下" . 36) ("以斯拉记" . 10) ("尼希米记" . 13)
+    ("以斯帖记" . 10) ("约伯记" . 42) ("诗篇" . 150) ("箴言" . 31)
+    ("传道书" . 12) ("雅歌" . 8) ("以赛亚书" . 66) ("耶利米书" . 52)
+    ("耶利米哀歌" . 5) ("以西结书" . 48) ("但以理书" . 12) ("何西阿书" . 14)
+    ("约珥书" . 3) ("阿摩司书" . 9) ("俄巴底亚书" . 1) ("约拿书" . 4) ("弥迦书" . 7)
+    ("那鸿书" . 3) ("哈巴谷书" . 3) ("西番雅书" . 3) ("哈该书" . 2)
+    ("撒迦利亚书" . 14) ("玛拉基书" . 4) ("Matthew" . 28) ("Mark" . 16)
+    ("Luke" . 24) ("John" . 21) ("Acts" . 28) ("Romans" . 16)
+    ("1 Corinthians" . 16) ("2 Corinthians" . 13) ("Galatians" . 6)
+    ("Ephesians" . 6) ("Philippians" . 4) ("Colossians" . 4)
+    ("1 Thessalonians" . 5) ("2 Thessalonians" . 3) ("1 Timothy" . 6)
+    ("2 Timothy" . 4) ("Titus" . 3) ("Philemon" . 1) ("Hebrews" . 13)
+    ("James" . 5) ("1 Peter" . 5) ("2 Peter" . 3) ("1 John" . 5)
+    ("2 John" . 1) ("3 John" . 1) ("Jude" . 1) ("Revelation" . 22))
+  "List of Bible books (CNVS version) with their number of chapters.")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                     Package Section I: Fetch the Verse of The Day          ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -336,10 +356,12 @@ but have everlasting life."
                   bible-gateway-bible-books-lsg)
                  ((string= bible-gateway-bible-version "RVA")
                   bible-gateway-bible-books-rva)
-		 ((string= bible-gateway-bible-version "ALB")
-		  bible-gateway-bible-books-alb)
-		 ((string= bible-gateway-bible-version "UKR")
-		  bible-gateway-bible-books-ukr)
+                 ((string= bible-gateway-bible-version "ALB")
+                  bible-gateway-bible-books-alb)
+                 ((string= bible-gateway-bible-version "UKR")
+                  bible-gateway-bible-books-ukr)
+                 ((string= bible-gateway-bible-version "CNVS")
+                  bible-gateway-bible-books-cnvs)
                  (t bible-gateway-bible-books-kjv)))
    nil t))
 
@@ -355,6 +377,8 @@ but have everlasting life."
                            bible-gateway-bible-books-alb)
                           ((string= version "UKR")
                            bible-gateway-bible-books-ukr)
+                          ((string= version "CNVS")
+                           bible-gateway-bible-books-cnvs)
                           (t bible-gateway-bible-books-kjv))))
     (cdr (assoc book books-list))))
 
@@ -370,6 +394,8 @@ but have everlasting life."
                             bible-gateway-bible-books-alb)
                            ((string= bible-gateway-bible-version "UKR")
                             bible-gateway-bible-books-ukr)
+                           ((string= bible-gateway-bible-version "CNVS")
+                            bible-gateway-bible-books-cnvs)
                            (t bible-gateway-bible-books-kjv)))
          (max-chapters (cdr (assoc book books-list))))
     (unless max-chapters
